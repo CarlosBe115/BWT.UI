@@ -74,3 +74,41 @@ C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR 
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.pdb
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.genruntimeconfig.cache
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.CopyComplete
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.exe
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.deps.json
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.runtimeconfig.json
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.runtimeconfig.dev.json
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.dll
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.pdb
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.Views.dll
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.Views.pdb
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.AssemblyReference.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.AssemblyInfoInputs.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.AssemblyInfo.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.CoreCompileInputs.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorAssemblyInfo.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorAssemblyInfo.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\staticwebassets\BWT.UI.StaticWebAssets.Manifest.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\staticwebassets\BWT.UI.StaticWebAssets.xml
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\scopedcss\bundle\BWT.UI.styles.css
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.TagHelpers.input.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.TagHelpers.output.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorCoreGenerate.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorTargetAssemblyInfo.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorTargetAssemblyInfo.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.Views.pdb
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.dll
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.pdb
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.genruntimeconfig.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.CopyComplete
