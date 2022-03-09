@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "t9rsUqk/Cm42cBfoea9Jq6T5bFwOUKOCuiFdn1+Z3PAxycE3RC2TzxikB7kKv4ROW8tM6c7IwJLpskzazQU0zg==",
+  "dgSpecHash": "4wQfTdwnrJr7DDyF3H+ODiLNiqDhym10VIPvrS17awxELdEx061Wf1pJaxcBpRL2FAk7wRAShwtRdG5AOlsiWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\carna\\Documents\\GitHub\\BWT.UI\\BWT.UI\\BWT.UI.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\carna\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
