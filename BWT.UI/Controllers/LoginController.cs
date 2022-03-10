@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,13 @@ namespace BWT.UI.Controllers
 {
     public class LoginController : Controller
     {
-        public IActionResult Index()
+        public static string Usertoken { get; private set; }
+
+        public IActionResult Login()
         {
+            
+            //HttpContext.Session.SetString(Usertoken, "12345");
+            //HttpContext.Session.GetString(Usertoken);
             return View();
         }
     }

@@ -11,6 +11,9 @@
 section[id]{
     scroll-margin-top: 75px;
 }
+logi {
+    scroll-margin-top: 75px;
+}
 @font-face {
     font-family: 'newletter';
     src: url(../Custom/go3v2.ttf);
