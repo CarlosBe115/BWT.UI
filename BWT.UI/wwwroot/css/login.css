@@ -5,7 +5,6 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-    
 }
 
 .bubbles {
@@ -15,16 +14,11 @@
     overflow: hidden
 }
 
-body {
-    background: #333333;
-}
-
 body::-webkit-scrollbar {
     display: none
 }
 
 .circle {
-    
     position: absolute;
     z-index: -100;
     border-radius: 50%;
@@ -81,36 +75,38 @@ body::-webkit-scrollbar {
     margin: 50px auto
 }
 
-.container .content {
-    max-width: 42%;
-    margin-right: 30px
-}
+    .container .content {
+        max-width: 42%;
+        margin-right: 30px
+    }
 
-.container .fs-5 {
-    font-size: 1.4rem !important;
-    font-weight: 200
-}
+    .container .fs-5 {
+        font-size: 1.4rem !important;
+        font-weight: 200
+    }
 
-.container .text-grey {
-    color: black;
-}
+    .container .text-grey {
+        color: black;
+    }
 
-.container .text {
-    font-weight: 100;
-    font-size: 0.9rem;
-    line-height: 1.6rem
-}
+    .container .text {
+        font-weight: 100;
+        font-size: 0.9rem;
+        line-height: 1.6rem
+    }
+
 .btn-primary {
     color: #212529;
     background-color: D;
     border-color: #F9C61D
 }
 
-.btn-primary:hover {
-    color: #fff;
-    background-color: #F5C61D;
-    border-color: #F5C61D
-}
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #F5C61D;
+        border-color: #F5C61D
+    }
+
 .container .btn {
     border: none;
     box-shadow: 0 2px 3px #505050b0;
@@ -125,17 +121,17 @@ body::-webkit-scrollbar {
     background-color: #F9C61D;
 }
 
-.container .content .btn.btn-primary:hover {
-    background-color: #F5C61D
-}
+    .container .content .btn.btn-primary:hover {
+        background-color: #F5C61D
+    }
 
 .container .btn.btn-default {
     background-color: #fff
 }
 
-.container .btn.btn-default:hover {
-    background-color: #f2f2f2
-}
+    .container .btn.btn-default:hover {
+        background-color: #f2f2f2
+    }
 
 .container .btn img {
     width: 20px;
@@ -154,53 +150,53 @@ body::-webkit-scrollbar {
     box-shadow: 0 5px 15px #F5C61D
 }
 
-.container .card .card-head {
-    padding: 15px 20px;
-    overflow-x: hidden;
-    box-shadow: 0 2px 3px #1f1f1f33;
-    height: 140px
-}
+    .container .card .card-head {
+        padding: 15px 20px;
+        overflow-x: hidden;
+        box-shadow: 0 2px 3px #1f1f1f33;
+        height: 140px
+    }
 
-.container .card .card-form {
-    height: 100%;
-    padding: 15px 20px;
-    background-color: #eeeeee
-}
+    .container .card .card-form {
+        height: 100%;
+        padding: 15px 20px;
+        background-color: #eeeeee
+    }
 
-.container .card .card-form .input-field {
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 0.1rem 0.3rem;
-    border-radius: 4px;
-    box-shadow: 0 2px 3px #1f1f1f33
-}
+        .container .card .card-form .input-field {
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+            box-shadow: 0 2px 3px #1f1f1f33
+        }
 
-.container .card .card-form .input-field .form-control {
-    box-shadow: none;
-    border: none
-}
+            .container .card .card-form .input-field .form-control {
+                box-shadow: none;
+                border: none
+            }
 
-.container .card .card-form .input-field input:focus::placeholder {
-    color:#F9C61D;
-}
+            .container .card .card-form .input-field input:focus::placeholder {
+                color: #F9C61D;
+            }
 
-.container .card .fs-08 {
-    font-size: 0.85rem;
-    font-weight: 500
-}
+    .container .card .fs-08 {
+        font-size: 0.85rem;
+        font-weight: 500
+    }
 
-.container .card .card-form .btn {
-    width: 150px
-}
+    .container .card .card-form .btn {
+        width: 150px
+    }
 
-.container .card .card-form .btn.btn.btn-primary {
-    background-color: #F5C61D
-}
+        .container .card .card-form .btn.btn.btn-primary {
+            background-color: #F5C61D
+        }
 
-.container .card .card-form .btn.btn.btn-primary:hover {
-    background-color: #F9C61D;
-}
+            .container .card .card-form .btn.btn.btn-primary:hover {
+                background-color: #F9C61D;
+            }
 
 @media (max-width: 767.5px) {
     .container .content {
@@ -227,4 +223,3 @@ body::-webkit-scrollbar {
     .container .card {
         min-width: 300px
     }
-}
