@@ -46,7 +46,7 @@ namespace BWT.UI.Controllers
             ApiResponse<Access> data;
             using (var httpClient = new HttpClient(_hadler))
             {
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer ", HttpContext.Session.GetString("Token"));
+                //httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer ", HttpContext.Session.GetString("Token"));
                 StringContent content = new StringContent(JsonConvert.SerializeObject(access), Encoding.UTF8, "application/json");
 
                 using (var response = await httpClient.PostAsync(apiBaseUrl + "access/validation", content))
