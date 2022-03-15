@@ -24,6 +24,11 @@ namespace BWT.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSession(Options =>
+            {
+                Options.IdleTimeout = TimeSpan.FromHours(4);
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +48,7 @@ namespace BWT.UI
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseSession();
 
             app.UseAuthorization();
 

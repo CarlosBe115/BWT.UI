@@ -29,7 +29,11 @@ namespace BWT.UI.Controllers
         }
         public IActionResult Login()
         {
-            
+            //if (HttpContext.Session.GetString("Token") == null)
+            //{
+            //    TempData["message"] = "Usuario no valido";
+            //    return Redirect("~/Home/Index");
+            //}
             //HttpContext.Session.SetString(Usertoken, "12345");
             //HttpContext.Session.GetString(Usertoken);
             return View();
@@ -42,8 +46,9 @@ namespace BWT.UI.Controllers
             ApiResponse<Access> data;
             using (var httpClient = new HttpClient(_hadler))
             {
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer ", HttpContext.Session.GetString("Token"));
                 StringContent content = new StringContent(JsonConvert.SerializeObject(access), Encoding.UTF8, "application/json");
-                
+
                 using (var response = await httpClient.PostAsync(apiBaseUrl + "access/validation", content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
@@ -52,9 +57,19 @@ namespace BWT.UI.Controllers
                 }
             }
 
-                //HttpContext.Session.SetString(Usertoken, "12345");
-                //HttpContext.Session.GetString(Usertoken);
-                return View();
+            if (data.Data != null)
+            {
+                HttpContext.Session.SetString("Token", data.Data.TokenValidation);
+                HttpContext.Session.SetInt32("Id", data.Data.Id);
+                HttpContext.Session.SetString("Email", data.Data.EmailAddress);
+                HttpContext.Session.SetInt32("Rol", data.Data.FkRol);
+            }
+            else
+            {
+                return Redirect("~/Home/Privacy");
+            }
+
+            return Redirect("~/Home/Privacy");
         }
 
     }

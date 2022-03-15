@@ -1,4 +1,5 @@
 ﻿using BWT.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -25,6 +26,12 @@ namespace BWT.UI.Controllers
 
         public IActionResult Privacy()
         {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                
+                TempData["message"] = "Usuario no valido";
+
+            }
             return View();
         }
 
