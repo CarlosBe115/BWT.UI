@@ -260,3 +260,5 @@ C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\tr\Microso
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterInfo.cshtml.g.cs

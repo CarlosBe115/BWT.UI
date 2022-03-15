@@ -1,0 +1,74 @@
+﻿@using Microsoft.AspNetCore.Http;
+<form class="form-horizontal" method="post" asp-controller="User" asp-action="RegisterInfo">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Registro de Información</legend>
+
+        <!-- Text input-->
+        @*<div class="form-group">
+            <label class="col-md-4 control-label" for="iD">ID</label>
+            <div class="col-md-4">
+                <input id="iD" name="Id" value= type="text" placeholder="placeholder" class="form-control input-md" required="">
+                <span class="help-block">help</span>
+            </div>
+        </div>*@
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="names">Nombre(s) Completo(s)</label>
+            <div class="col-md-4">
+                <input id="names" name="FullNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                <span class="help-block">help</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="apellido">Apellido(s) Completo(s)</label>
+            <div class="col-md-4">
+                <input id="apellido" name="LastNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                <span class="help-block">help</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="nametag">Nombre de Usuario</label>
+            <div class="col-md-4">
+                <input id="nametag" name="NameTag" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                <span class="help-block">help</span>
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="date">Fecha de cum</label>
+            <div class="col-md-4">
+                <input id="date" name="BirthDay" type="date" placeholder="placeholder" class="form-control input-md" required="">
+                <span class="help-block">help</span>
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="gender">Género</label>
+            <div class="col-md-4">
+                <select id="gender" name="Gender" class="form-control">
+                    <option value="Hombre">Hombre</option>
+                    <option value="Mujer">Mujer</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- File Button -->
+        @*<div class="form-group">
+            <label class="col-md-4 control-label" for="foto">Foto de perfil</label>
+            <div class="col-md-4">
+                <input id="foto" name="foto" class="input-file" type="file">
+            </div>
+        </div>*@
+        <button type="submit" class="btn btn-primary mt-3">Guardar Información</button>
+    </fieldset>
+</form>
+
