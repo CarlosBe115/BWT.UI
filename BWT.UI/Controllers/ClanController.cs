@@ -12,5 +12,13 @@ namespace BWT.UI.Controllers
         {
             return View();
         }
+        public IActionResult RegisterClans()
+        {
+            return View();
+        }
+        public IActionResult ListClans()
+        {
+            return View();
+        }
     }
 }

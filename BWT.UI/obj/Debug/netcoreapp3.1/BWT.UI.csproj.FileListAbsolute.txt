@@ -264,3 +264,7 @@ C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\View
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterInfo.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterInfo.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDash.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Dash\Index.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\RegisterClans.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\ListClans.cshtml.g.cs
