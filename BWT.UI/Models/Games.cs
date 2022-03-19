@@ -5,18 +5,12 @@ using System.Threading.Tasks;
 
 namespace BWT.UI.Models
 {
-    public partial class Games : BaseEntity
+    public partial class Games
     {
-        public Games()
-        {
-            TbClans = new HashSet<Clans>();
-        }
-
+        public int Id { get; set; }
         public string NameGame { get; set; }
         public string DescriptionGame { get; set; }
         public string ImageGame { get; set; }
         public int LimitUserGames { get; set; }
-
-        public virtual ICollection<Clans> TbClans { get; set; }
     }
 }

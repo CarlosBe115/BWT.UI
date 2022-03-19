@@ -19,18 +19,22 @@
                 <div class="card-body">
                     <h5 class="card-title">Agregar Elemento</h5>
                     <!-- Multi Columns Form -->
-                    <form class="row g-3" asp-action="RegisterClan">
+                    <p class="text-danger">
+                        @TempData["message"]
+                    </p>
+
+                    <form class="row g-3" method="post" asp-controller="Games" asp-action="Create">
                         <div class="col-md-12">
                             <label for="inputName5" class="form-label">Nombre del Videojuego</label>
-                            <input type="text" class="form-control" id="inputName5">
+                            <input type="text" class="form-control" id="inputName5" name="NameGame">
                         </div>
                         <div class="col-12">
                             <label for="inputAddress5" class="form-label">Descripción</label>
-                            <input type="text" class="form-control" id="inputAddres5s" placeholder="Descripción">
+                            <input type="text" class="form-control" id="inputAddres5s" placeholder="Descripción" name="DescriptionGame">
                         </div>
                         <div class="col-md-4">
                             <label for="inputZip" class="form-label">Límite de Usuarios</label>
-                            <input type="text" class="form-control" id="inputZip">
+                            <input type="text" class="form-control" id="inputUsuarios" name="LimitUserGames">
                         </div>
                         @*<div class="col-12">
                                 <div class="form-check">

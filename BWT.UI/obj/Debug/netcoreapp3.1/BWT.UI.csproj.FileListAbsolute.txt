@@ -147,7 +147,6 @@ C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\ru\Microso
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Register.cshtml.g.cs
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\RegisterInfo.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\appsettings.Development.json
@@ -269,3 +268,12 @@ C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR 
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.genruntimeconfig.cache
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Games\Create.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.AssemblyReference.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\ListClans.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\RegisterClans.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Dash\Index.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Games\Create.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDash.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Recover.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Restore.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Validation.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Games\ListGames.cshtml.g.cs

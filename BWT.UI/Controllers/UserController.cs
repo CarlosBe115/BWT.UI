@@ -53,7 +53,7 @@ namespace BWT.UI.Controllers
         #endregion
 
         #region Consumo
-
+        //INICIO DE SESION
         [HttpPost]
         public async Task<IActionResult> Validation(Access access)
         {
@@ -71,10 +71,10 @@ namespace BWT.UI.Controllers
             }
 
             if (data.Data != null) { FillData(data.Data); return Redirect("~/Dash/Index"); }
-            else { return Redirect("~/User/Validation"); TempData["message"] = "Usuario no valido"; }
+            else { TempData["message"] = "Usuario no valido"; return Redirect("~/User/Validation"); }
 
         }
-        
+        //REGISTRO DE SESION
         [HttpPost]
         public async Task<ActionResult> Register(Access access)
         {
@@ -92,11 +92,11 @@ namespace BWT.UI.Controllers
                 }
             }
             if (request == null) TempData["message"] = "Usuario no creado";
-            else return Redirect("~/User/RegisterInfo");
+            else return Redirect("~/User/Validation");
 
             return View();
         }
-        
+        //REGISTRAR INFORMACION PERSONAL
         [HttpPost]
         public async Task<ActionResult> RegisterInfo(UserInfo userinfo)
         {
@@ -116,7 +116,7 @@ namespace BWT.UI.Controllers
                 }
             }
             if (request == null) TempData["message"] = "Información no guardada";
-            else return Redirect("https://www.youtube.com");
+            else return Redirect("~/Dash/Index");
             
             return View();
         }
