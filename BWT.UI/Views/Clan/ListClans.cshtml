@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "Clanes";
     Layout = "~/Views/Shared/_LayoutDash.cshtml";
+    var listclan = (ApiResponse<IEnumerable<Clans>>)ViewBag.listclan;
 }
 <div class="pagetitle">
     <h1>Clanes</h1>
@@ -24,50 +25,24 @@
                 <table class="table table-borderless">
                     <thead>
                         <tr>
-                            <th scope="col">Preview</th>
-                            <th scope="col">Product</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Sold</th>
-                            <th scope="col">Revenue</th>
+                            <th scope="col">Nombre del Clan</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Usuarios Actuales</th>
+                            <th scope="col">Limite de Usuarios</th>
+                         
                         </tr>
                     </thead>
-                    <tbody>
+                    @foreach (var i in listclan.Data)
+                    {
                         <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                            <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                            <td>$64</td>
-                            <td class="fw-bold">124</td>
-                            <td>$5,828</td>
+                            <th scope="row"><img style="height:50px;width:50px" src="@i.NameClan" /> </th>
+                            <td>@i.DescriptionClan</td>
+                            <td>@i.CurrentUser</td>
+                            <td class="fw-bold">@i.LimitUser</td>
+
                         </tr>
-                        <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                            <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                            <td>$46</td>
-                            <td class="fw-bold">98</td>
-                            <td>$4,508</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                            <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                            <td>$59</td>
-                            <td class="fw-bold">74</td>
-                            <td>$4,366</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                            <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                            <td>$32</td>
-                            <td class="fw-bold">63</td>
-                            <td>$2,016</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                            <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                            <td>$79</td>
-                            <td class="fw-bold">41</td>
-                            <td>$3,239</td>
-                        </tr>
-                    </tbody>
+
+                    }
                 </table>
             </div>
         </div>

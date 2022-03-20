@@ -5,13 +5,9 @@ using System.Threading.Tasks;
 
 namespace BWT.UI.Models
 {
-    public partial class Clans : BaseEntity
+    public partial class Clans 
     {
-        public Clans()
-        {
-            TbUserClan = new HashSet<UserClan>();
-        }
-
+        public int Id { get; set; }
         public int FkGames { get; set; }
         public string NameClan { get; set; }
         public string Abbreviation { get; set; }
@@ -20,8 +16,5 @@ namespace BWT.UI.Models
         public int LimitUser { get; set; }
         public int CurrentUser { get; set; }
         public string Ranked { get; set; }
-
-        public virtual Games FkGamesNavigation { get; set; }
-        public virtual ICollection<UserClan> TbUserClan { get; set; }
     }
 }
