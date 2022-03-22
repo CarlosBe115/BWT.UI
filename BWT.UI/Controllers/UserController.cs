@@ -93,7 +93,7 @@ namespace BWT.UI.Controllers
             }
 
             if (data.Data != null) {return Redirect("~/Dash/Index"); }
-            else { TempData["message"] = "Usuario no valido"; return Redirect("~/User/Validation"); }
+            else { TempData["message"] = "Información incorrecta"; return Redirect("~/User/Validation"); }
 
         }
         public ActionResult InfoSession(ApiResponse<IEnumerable<Clans>> clans, ApiResponse<UserInfo> info)
@@ -106,8 +106,10 @@ namespace BWT.UI.Controllers
             else
             {
                 HttpContext.Session.SetInt32("IsOwnerClan", 2);
+
+
             }
-                  if (info.Data == null)
+            if (info.Data == null)
             {
                 HttpContext.Session.SetString("names", "No hay información");
                 HttpContext.Session.SetString("nametag", "No hay información");

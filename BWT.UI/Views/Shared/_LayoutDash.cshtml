@@ -126,7 +126,7 @@
                     </li>
                     
                     <li>
-                        @{
+                        @*@{
                             if (Context.Session.GetInt32("IsOwnerClan") == 1)
                             {
                                 <a href="../Clan/VerClan/@Context.Session.GetInt32("clan")" >
@@ -134,12 +134,12 @@
                                 </a>
                             }
                             else
-                            {
+                            {*@
                                 <a href="../Clan/RegisterClans">
                                     <i class="bi bi-plus-circle"></i><span>Registrar Clan</span>
                                 </a>
-                            }
-                        }
+                            @*}
+                        }*@
 
 
 
