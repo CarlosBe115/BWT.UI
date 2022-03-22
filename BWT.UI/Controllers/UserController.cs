@@ -118,7 +118,8 @@ namespace BWT.UI.Controllers
             else
             {
                 HttpContext.Session.SetString("names", info.Data.FullNames +" "+ info.Data.LastNames);
-                HttpContext.Session.SetString("nametag", info.Data.NameTag);
+
+                HttpContext.Session.SetString("nametag", clans.Data.Select(x => x.Abbreviation).FirstOrDefault() +" " + info.Data.NameTag);
 
             }
             return View();
