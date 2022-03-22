@@ -26,21 +26,23 @@
                     <thead>
                         <tr>
                             <th scope="col">Nombre del Clan</th>
+                            <th scope="col">Abreviación</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Usuarios Actuales</th>
-                            <th scope="col">Limite de Usuarios</th>
-                         
+                            <th scope="col">Límite de Usuarios</th>
+
                         </tr>
                     </thead>
                     @foreach (var i in listclan.Data)
                     {
-                        <tr>
-                            <th scope="row"><img style="height:50px;width:50px" src="@i.NameClan" /> </th>
-                            <td>@i.DescriptionClan</td>
-                            <td>@i.CurrentUser</td>
-                            <td class="fw-bold">@i.LimitUser</td>
+                <tr>
+                    <th scope="row">@i.NameClan</th>
+                    <td>@i.Abbreviation</td>
+                    <td>@i.DescriptionClan</td>
+                    <td>@i.CurrentUser</td>
+                    <td class="fw-bold">@i.LimitUser</td>
 
-                        </tr>
+                </tr>
 
                     }
                 </table>

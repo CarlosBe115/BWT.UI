@@ -33,7 +33,7 @@ namespace BWT.UI.Controllers
 
             using (var httpClient = new HttpClient(_hadler))
             {
-                string parameters = $"?NameClan={clan.NameClan}&DescriptionClan={clan.DescriptionClan}&CurrentUser={clan.CurrentUser}&Abbreviation={clan.Abbreviation}&LimitUser={clan.LimitUser}";
+                string parameters = $"?NameClan={clan.NameClan}&DescriptionClan={clan.DescriptionClan}&CurrentUser={clan.CurrentUser}&Abbreviation={clan.Abbreviation}&LimitUser={clan.LimitUser}&FKUserCreator={clan.FKUserCreator}";
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
 
@@ -44,12 +44,25 @@ namespace BWT.UI.Controllers
                 }
             }
 
+
             return View();
         }
         [HttpGet]
         // GET: ClanController/Create
-        public IActionResult RegisterClans()
+        public async Task<IActionResult> RegisterClans()
         {
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                string parameters = "?namegame=&descriptiongame=";
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "Games/all/" + parameters))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.listgames = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Games>>>(apiResponse);
+                }
+
+            }
+
             return View();
         }
         #endregion
@@ -58,6 +71,8 @@ namespace BWT.UI.Controllers
         public async Task<IActionResult> RegisterClans(Clans clan)
         {
             ApiResponse<bool> request;
+            clan.FKUserCreator = (int)HttpContext.Session.GetInt32("Id");
+            clan.CreationClan = DateTime.Now;
             
             using (var httpClient = new HttpClient(_hadler))
             {
@@ -80,3 +95,4 @@ namespace BWT.UI.Controllers
 
     }
 }
+

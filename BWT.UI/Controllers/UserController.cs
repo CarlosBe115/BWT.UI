@@ -27,7 +27,7 @@ namespace BWT.UI.Controllers
         }
 
         #region Vistas
-
+       
         public IActionResult Validation()
         {
             return View();
@@ -70,8 +70,54 @@ namespace BWT.UI.Controllers
                 }
             }
 
-            if (data.Data != null) { FillData(data.Data); return Redirect("~/Dash/Index"); }
+            if (data.Data != null) { FillData(data.Data); await RSession(); return Redirect("~/Dash/Index"); }
             else { TempData["message"] = "Usuario no valido"; return Redirect("~/User/Validation"); }
+
+        }
+        public async Task<IActionResult> RSession()
+        {
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                ApiResponse<IEnumerable<Clans>> clan;
+                ApiResponse<UserInfo> info;
+                string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/all/" + parameters))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    clan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
+                }
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/one/" + HttpContext.Session.GetInt32("Id")))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    info = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(apiResponse);
+                }
+                InfoSession(clan, info);
+            }
+
+            return View();
+        }
+        public ActionResult InfoSession(ApiResponse<IEnumerable<Clans>> clans, ApiResponse<UserInfo> info)
+        {
+                  if (clans.Data.Count() != 0)
+            {
+                HttpContext.Session.SetInt32("IsOwnerClan", 1);
+            }
+            else
+            {
+                HttpContext.Session.SetInt32("IsOwnerClan", 0);
+            }
+                  if (info == null)
+            {
+               TempData["message"] = "Completa tu información personal"; return Redirect("~/User/RegisterInfo");
+            }
+            else
+            {
+                HttpContext.Session.SetString("names", info.Data.FullNames);
+                HttpContext.Session.SetString("nametag", info.Data.NameTag);
+
+            }
+            return View();
 
         }
         //REGISTRO DE SESION
@@ -102,7 +148,7 @@ namespace BWT.UI.Controllers
         {
             ApiResponse<bool> request;
             userinfo.FkAccess = (int)HttpContext.Session.GetInt32("Id");
-            userinfo.ImageProfile = "https://cdn3.iconfinder.com/data/icons/avatars-9/145/Avatar_Cat-512.png";
+            userinfo.ImageProfile = "uno";
             using (var httpClient = new HttpClient(_hadler))
             {
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));

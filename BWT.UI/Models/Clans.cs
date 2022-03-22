@@ -14,6 +14,7 @@ namespace BWT.UI.Models
         public string DescriptionClan { get; set; }
         public DateTime CreationClan { get; set; }
         public int LimitUser { get; set; }
+        public int FKUserCreator { get; set; }
         public int CurrentUser { get; set; }
         public string Ranked { get; set; }
     }

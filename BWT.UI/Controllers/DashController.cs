@@ -1,87 +1,50 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BWT.UI.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace BWT.UI.Controllers
 {
     public class DashController : Controller
     {
+        HttpClientHandler _hadler = new HttpClientHandler();
+        private readonly IConfiguration _configuration;
+        private string apiBaseUrl;
+
+        public DashController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+            apiBaseUrl = _configuration.GetValue<string>("WebApiBaseUrl");
+            _hadler.ServerCertificateCustomValidationCallback = (
+                sender, cert, chain, ssLPolicyError) => { return true; };
+        }
         // GET: DashController
-        public ActionResult Index()
+        public async Task<IActionResult> Index(Clans clan)
         {
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/all/" + parameters))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.listclan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
+                }
+            }
+
             return View();
         }
-
-        // GET: DashController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: DashController/Create
+      
         public ActionResult RegisterClan()
         {
             return View();
         }
 
-        // POST: DashController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DashController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: DashController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: DashController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: DashController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
