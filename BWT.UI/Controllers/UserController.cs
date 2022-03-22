@@ -68,10 +68,10 @@ namespace BWT.UI.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     data = JsonConvert.DeserializeObject<ApiResponse<Access>>(apiResponse);
-                    FillData(data.Data);
                 }
                 if (data.Data != null)
                 {
+                    FillData(data.Data);
                     string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
                     httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
@@ -101,6 +101,7 @@ namespace BWT.UI.Controllers
                   if (clans.Data.Count() != 0 || clans.Data != null)
             {
                 HttpContext.Session.SetInt32("IsOwnerClan", 1);
+                HttpContext.Session.SetInt32("clan", clans.Data.Select(x => x.Id).FirstOrDefault());
             }
             else
             {
@@ -218,6 +219,7 @@ namespace BWT.UI.Controllers
             HttpContext.Session.SetString("names", " ");
             HttpContext.Session.SetString("nametag", " ");
             HttpContext.Session.SetInt32("IsOwnerClan", 0);
+            HttpContext.Session.SetInt32("clan", 0);
 
             return Redirect("~/User/Validation");
         }

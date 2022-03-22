@@ -129,7 +129,7 @@
                         @{
                             if (Context.Session.GetInt32("IsOwnerClan") == 1)
                             {
-                                <a href="../Clan/VerClan">
+                                <a href="../Clan/VerClan/@Context.Session.GetInt32("clan")" >
                                     <i class="bi bi-plus-circle"></i><span>Ver tu clan</span>
                                 </a>
                             }
