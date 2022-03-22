@@ -90,9 +90,9 @@
                             <hr class="dropdown-divider">
                         </li>*@
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Content("~/User/Logout")">
                                 <i class="bi bi-box-arrow-right"></i>
-                                <span>Sign Out</span>
+                                <span>Cerrar Sesión</span>
                             </a>
                         </li>
 
@@ -126,13 +126,25 @@
                     </li>
                     
                     <li>
-                        <a href="../Clan/RegisterClans">
-                            <i class="bi bi-plus-circle"></i><span>Registrar Clan</span>
-                        </a>
+                        @{
+                            if (Context.Session.GetInt32("IsOwnerClan") == 1)
+                            {
+                                <a href="../Clan/VerClan">
+                                    <i class="bi bi-plus-circle"></i><span>Ver tu clan</span>
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="../Clan/RegisterClans">
+                                    <i class="bi bi-plus-circle"></i><span>Registrar Clan</span>
+                                </a>
+                            }
+                        }
 
-                        
+
+
                     </li>
-                    }
+                    
                 </ul>
             </li><!-- End Components Nav -->
             @*SOLO LO DEBE VER EL ADMIN*@           

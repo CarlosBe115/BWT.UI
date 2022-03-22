@@ -58,6 +58,8 @@ namespace BWT.UI.Controllers
         public async Task<IActionResult> Validation(Access access)
         {
             ApiResponse<Access> data;
+            ApiResponse<IEnumerable<Clans>> clan;
+            ApiResponse<UserInfo> info;
             using (var httpClient = new HttpClient(_hadler))
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(access), Encoding.UTF8, "application/json");
@@ -66,54 +68,53 @@ namespace BWT.UI.Controllers
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     data = JsonConvert.DeserializeObject<ApiResponse<Access>>(apiResponse);
-
+                    FillData(data.Data);
                 }
+                if (data.Data != null)
+                {
+                    string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
+                    httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                    using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/all/" + parameters))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        clan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
+                    }
+
+                    using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/one/?Id=" + HttpContext.Session.GetInt32("Id")))
+                    {
+                        string apiResponse = await response.Content.ReadAsStringAsync();
+                        info = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(apiResponse);
+                    }
+
+                    InfoSession(clan, info);
+                }
+
             }
 
-            if (data.Data != null) { FillData(data.Data); await RSession(); return Redirect("~/Dash/Index"); }
+            if (data.Data != null) {return Redirect("~/Dash/Index"); }
             else { TempData["message"] = "Usuario no valido"; return Redirect("~/User/Validation"); }
 
         }
-        public async Task<IActionResult> RSession()
-        {
-            using (var httpClient = new HttpClient(_hadler))
-            {
-                ApiResponse<IEnumerable<Clans>> clan;
-                ApiResponse<UserInfo> info;
-                string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
-                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
-                using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/all/" + parameters))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    clan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
-                }
-                using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/one/" + HttpContext.Session.GetInt32("Id")))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    info = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(apiResponse);
-                }
-                InfoSession(clan, info);
-            }
-
-            return View();
-        }
         public ActionResult InfoSession(ApiResponse<IEnumerable<Clans>> clans, ApiResponse<UserInfo> info)
         {
-                  if (clans.Data.Count() != 0)
+                  if (clans.Data.Count() != 0 || clans.Data != null)
             {
                 HttpContext.Session.SetInt32("IsOwnerClan", 1);
             }
             else
             {
-                HttpContext.Session.SetInt32("IsOwnerClan", 0);
+                HttpContext.Session.SetInt32("IsOwnerClan", 2);
             }
-                  if (info == null)
+                  if (info.Data == null)
             {
-               TempData["message"] = "Completa tu información personal"; return Redirect("~/User/RegisterInfo");
+                HttpContext.Session.SetString("names", "No hay información");
+                HttpContext.Session.SetString("nametag", "No hay información");
+                TempData["message"] = "Completa tu información personal"; return Redirect("~/User/RegisterInfo");
             }
             else
             {
-                HttpContext.Session.SetString("names", info.Data.FullNames);
+                HttpContext.Session.SetString("names", info.Data.FullNames +" "+ info.Data.LastNames);
                 HttpContext.Session.SetString("nametag", info.Data.NameTag);
 
             }
@@ -208,7 +209,18 @@ namespace BWT.UI.Controllers
         #endregion
 
         #region Metodos
+        public ActionResult Logout()
+        {
+            HttpContext.Session.SetString("Token", " ");
+            HttpContext.Session.SetInt32("Id", 0);
+            HttpContext.Session.SetString("Email", " ");
+            HttpContext.Session.SetInt32("Rol", 0);
+            HttpContext.Session.SetString("names", " ");
+            HttpContext.Session.SetString("nametag", " ");
+            HttpContext.Session.SetInt32("IsOwnerClan", 0);
 
+            return Redirect("~/User/Validation");
+        }
         public void FillData(Access data)
         {
             HttpContext.Session.SetString("Token", data.TokenValidation);
