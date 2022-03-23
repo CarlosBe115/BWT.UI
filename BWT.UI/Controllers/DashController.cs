@@ -25,8 +25,13 @@ namespace BWT.UI.Controllers
                 sender, cert, chain, ssLPolicyError) => { return true; };
         }
         // GET: DashController
-        public async Task<IActionResult> Index(Clans clan)
+        public async Task<IActionResult> Index()
         {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
             using (var httpClient = new HttpClient(_hadler))
             {
                 string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";

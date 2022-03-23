@@ -76,7 +76,7 @@ body::-webkit-scrollbar {
 }
 
     .container .content {
-        max-width: 42%;
+        max-width: 52%;
         margin-right: 30px
     }
 
@@ -141,8 +141,8 @@ body::-webkit-scrollbar {
 
 .container .card {
     margin-left: 40px;
-    min-width: 320px;
-    max-width: 400px;
+    min-width: 400px;
+    max-width: 480px;
     height: 400px;
     border: none;
     overflow: hidden;

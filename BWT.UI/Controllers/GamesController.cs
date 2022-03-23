@@ -30,7 +30,11 @@ namespace BWT.UI.Controllers
         // GET: GamesController/
         public async Task<IActionResult> ListGames(Games games)
         {
-            
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
             using (var httpClient = new HttpClient(_hadler))
             {
                 string parameters = $"?NameGame={games.NameGame}&DescriptionGame={games.DescriptionGame}";
@@ -50,6 +54,11 @@ namespace BWT.UI.Controllers
         // GET: GamesController/Create
         public IActionResult Create()
         {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
             return View();
         }
         #endregion

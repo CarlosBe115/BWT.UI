@@ -137,7 +137,6 @@ C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR 
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Dash\Index.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Login\Login.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDash.cshtml.g.cs
@@ -277,3 +276,7 @@ C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csp
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.dll
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.pdb
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.genruntimeconfig.cache
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Games\ListGames.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Recover.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Restore.cshtml.g.cs
+C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\Validation.cshtml.g.cs

@@ -30,6 +30,11 @@ namespace BWT.UI.Controllers
         // GET: ClansController/
         public async Task<IActionResult> ListClans(Clans clan)
         {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
 
             using (var httpClient = new HttpClient(_hadler))
             {
@@ -51,6 +56,11 @@ namespace BWT.UI.Controllers
         // GET: ClanController/Create
         public async Task<IActionResult> RegisterClans()
         {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
             using (var httpClient = new HttpClient(_hadler))
             {
                 string parameters = "?namegame=&descriptiongame=";

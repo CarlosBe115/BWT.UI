@@ -98,14 +98,18 @@ namespace BWT.UI.Controllers
         }
         public ActionResult InfoSession(ApiResponse<IEnumerable<Clans>> clans, ApiResponse<UserInfo> info)
         {
-                  if (clans.Data.Count() != 0 || clans.Data != null)
+       
+            if ( clans.Data.Count() != 1 )
             {
-                HttpContext.Session.SetInt32("IsOwnerClan", 1);
-                HttpContext.Session.SetInt32("clan", clans.Data.Select(x => x.Id).FirstOrDefault());
+                HttpContext.Session.SetInt32("IsOwnerClan", 2);
+
             }
             else
             {
-                HttpContext.Session.SetInt32("IsOwnerClan", 2);
+
+                HttpContext.Session.SetInt32("IsOwnerClan", 1);
+                HttpContext.Session.SetInt32("clan", clans.Data.Select(x => x.Id).FirstOrDefault());
+
 
 
             }

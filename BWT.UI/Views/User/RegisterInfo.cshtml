@@ -1,74 +1,78 @@
 ﻿@using Microsoft.AspNetCore.Http;
-<form class="form-horizontal" method="post" asp-controller="User" asp-action="RegisterInfo">
-    <fieldset>
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/jpg" href="img/Favicon.ico" />
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/login.css" />
+    <script type="text/javascript" src="~/js/login.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-center align-items-center flex-wrap mt-5">
+            <div class="form-card mt-5">
+                <div class="card">
+                    <div class="card-form">
+                        <h4 class="text-center text-muted fs-08 mt-3">Registrar información</h4>
+                        <p class="text-danger text-center">@TempData["message"]</p>
+                        <form method="post" asp-controller="User" asp-action="RegisterInfo">
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="names">Nombre(s)</label>
+                                <div class="col-md-8">
+                                    <input id="names" name="FullNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                                </div>
+                            </div>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="apellido">Apellido(s)</label>
+                                <div class="col-md-8">
+                                    <input id="apellido" name="LastNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="nametag">Gametag</label>
+                                <div class="col-md-8">
+                                    <input id="nametag" name="NameTag" type="text" placeholder="placeholder" class="form-control input-md" required="">
+                                </div>
+                            </div>
 
-        <!-- Form Name -->
-        <legend>Registro de Información</legend>
-
-        <!-- Text input-->
-        @*<div class="form-group">
-            <label class="col-md-4 control-label" for="iD">ID</label>
-            <div class="col-md-4">
-                <input id="iD" name="Id" value= type="text" placeholder="placeholder" class="form-control input-md" required="">
-                <span class="help-block">help</span>
-            </div>
-        </div>*@
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="names">Nombre(s) Completo(s)</label>
-            <div class="col-md-4">
-                <input id="names" name="FullNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
-                <span class="help-block">help</span>
+                            <!-- Text input-->
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="date">Nacimiento:</label>
+                                <div class="col-md-8">
+                                    <input id="date" name="BirthDay" type="date" placeholder="placeholder" class="form-control input-md" required="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12 control-label" for="gender">Género</label>
+                                <div class="col-md-8">
+                                    <select id="gender" name="Gender" class="form-control">
+                                        <option value="Hombre">Hombre</option>
+                                        <option value="Mujer">Mujer</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">Guardar Información</button>
+                            <div class="d-flex align-items-center input-field"> <span class="far fa-envelope text-muted"></span> <input type="email" placeholder="Email" class="form-control" required name="EmailAddress"> </div>
+                            <div class="d-flex align-items-center input-field"> <span class="fas fa-key text-muted"></span> <input type="password" placeholder="Password" class="form-control" required name="EmailPassword"> </div>
+                        </form>
+                        @*<div class="d-flex align-items-center"> <input type="checkbox" name="remember" id="remember"> <label class="text-muted ms-2" for="remember">Remember me</label> </div>*@
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="apellido">Apellido(s) Completo(s)</label>
-            <div class="col-md-4">
-                <input id="apellido" name="LastNames" type="text" placeholder="placeholder" class="form-control input-md" required="">
-                <span class="help-block">help</span>
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="nametag">Nombre de Usuario</label>
-            <div class="col-md-4">
-                <input id="nametag" name="NameTag" type="text" placeholder="placeholder" class="form-control input-md" required="">
-                <span class="help-block">help</span>
-            </div>
-        </div>
-
-        <!-- Text input-->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="date">Fecha de cum</label>
-            <div class="col-md-4">
-                <input id="date" name="BirthDay" type="date" placeholder="placeholder" class="form-control input-md" required="">
-                <span class="help-block">help</span>
-            </div>
-        </div>
-
-        <!-- Select Basic -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="gender">Género</label>
-            <div class="col-md-4">
-                <select id="gender" name="Gender" class="form-control">
-                    <option value="Hombre">Hombre</option>
-                    <option value="Mujer">Mujer</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- File Button -->
-        @*<div class="form-group">
-            <label class="col-md-4 control-label" for="foto">Foto de perfil</label>
-            <div class="col-md-4">
-                <input id="foto" name="foto" class="input-file" type="file">
-            </div>
-        </div>*@
-        <button type="submit" class="btn btn-primary mt-3">Guardar Información</button>
-    </fieldset>
-</form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js" integrity="sha512-SttpKhJqONuBVxbRcuH0wezjuX+BoFoli0yPsnrAADcHsQMW8rkR84ItFHGIkPvhnlRnE2FaifDOUw+EltbuHg==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
 
