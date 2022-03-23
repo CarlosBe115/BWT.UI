@@ -55,7 +55,7 @@
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            
+
                             <span>@Context.Session.GetString("nametag")</span>
                         </li>
                         <li>
@@ -63,32 +63,28 @@
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="../User/RegisterInfo">
-                                <i class="bi bi-person"></i>
-                                <span>Perfil</span>
-                            </a>
+                            @if (Context.Session.GetString("names") != null)
+                            {
+                                <a class="dropdown-item d-flex align-items-center" href="../User/InfoPersonal">
+                                    <i class="bi bi-person"></i>
+                                    <span>Perfil</span>
+                                </a>
+                            }
+                            else 
+                            {
+                                <a class="dropdown-item d-flex align-items-center" href="../User/RegisterInfo">
+                                    <i class="bi bi-person"></i>
+                                    <span>Perfil</span>
+                                </a>
+
+                            }
+
+
+
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Ajustes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        @*<li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Need Help?</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>*@
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="@Url.Content("~/User/Logout")">
                                 <i class="bi bi-box-arrow-right"></i>
@@ -124,12 +120,12 @@
                             <i class="bi bi-card-checklist"></i><span>Lista de Clanes</span>
                         </a>
                     </li>
-                    
+
                     <li>
                         @{
                             if (Context.Session.GetInt32("IsOwnerClan") == 1)
                             {
-                                <a href="../Clan/VerClan/@Context.Session.GetInt32("clan")" >
+                                <a href="../Clan/VerClan/@Context.Session.GetInt32("clan")">
                                     <i class="bi bi-plus-circle"></i><span>Ver tu clan</span>
                                 </a>
                             }
@@ -144,36 +140,55 @@
 
 
                     </li>
-                    
+
                 </ul>
             </li><!-- End Components Nav -->
-            @*SOLO LO DEBE VER EL ADMIN*@           
-            <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-controller"></i><span>Videojuegos</span><i class="bi bi-chevron-down ms-auto"></i>
-                </a>
-                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                    <li>
-                        <a href="../Games/ListGames">
-                            <i class="bi bi-card-checklist"></i><span>Lista de Juegos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="../Games/Create">
-                            <i class="bi bi-plus-circle"></i><span>Agregar elemento</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
+            @if (Context.Session.GetInt32("Rol") == 2)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                        <i class="bi bi-controller"></i><span>Videojuegos</span><i class="bi bi-chevron-down ms-auto"></i>
+                    </a>
+                    <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                        <li>
+                            <a href="../Games/ListGames">
+                                <i class="bi bi-card-checklist"></i><span>Lista de Juegos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Games/Create">
+                                <i class="bi bi-plus-circle"></i><span>Agregar elemento</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
+
+            }
+
+
+            @*SOLO LO DEBE VER EL ADMIN*@
             <li class="nav-heading">Ajustes</li>
+            @if (Context.Session.GetString("names") != null)
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="../User/InfoPersonal">
+                        <i class="bi bi-person"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
+            }
+            else
+            {
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="../User/RegisterInfo">
+                        <i class="bi bi-person"></i>
+                        <span>Perfil</span>
+                    </a>
+                </li>
+
+            }
 
         </ul>
 

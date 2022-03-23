@@ -20,10 +20,9 @@
                     <div class="card-form">
                         <p class="text-center text-muted fs-08 mt-3">Proporcionar tu correo para iniciar la recuperación</p>
                         <form method="post" asp-controller="User" asp-action="Restore">
-                            <div class="d-flex align-items-center input-field" hidden>
-                                <span class="far fa-envelope text-muted"></span>
-                                <input type="text" placeholder="Token" value="@token" class="form-control" required name="TokenValidation">
-                            </div>
+
+                                <input type="text" placeholder="Token" value="@token" class="form-control" hidden required name="TokenValidation">
+
                             <div class="d-flex align-items-center input-field">
                                 <span class="far fa-envelope text-muted"></span>
                                 <input type="text" placeholder="Contraseña" class="form-control" required name="EmailPassword1">

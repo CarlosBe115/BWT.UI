@@ -30,7 +30,21 @@
 
         <section class="section dashboard">
             <div class="row">
-                @TempData["message"]
+                @if (TempData["message"] == null)
+                {
+
+                }
+                else if ((TempData["message"].ToString() == "Completa tu información personal aquí."))
+                {
+                    <a class="text-danger" href="../User/RegisterInfo">@TempData["message"]</a>
+
+                }
+                else
+                {
+                    <a class="text-danger">@TempData["message"]</a>
+                }
+
+
                 <!-- Left side columns -->
                 <div class="col-lg-8">
                     <div class="row">

@@ -13,7 +13,7 @@ namespace BWT.UI.Models
         public string LastNames { get; set; }
         public string Gender { get; set; }
         public string NameTag { get; set; }
-        public DateTime? BirthDay { get; set; }
+        public DateTime BirthDay { get; set; }
         public string ImageProfile { get; set; }
     }
 

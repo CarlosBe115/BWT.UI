@@ -92,7 +92,7 @@ namespace BWT.UI.Controllers
 
             }
 
-            if (data.Data != null) {return Redirect("~/Dash/Index"); }
+            if (data.Data != null)  { return Redirect("~/Dash/Index"); }
             else { TempData["message"] = "Información incorrecta"; return Redirect("~/User/Validation"); }
 
         }
@@ -117,10 +117,11 @@ namespace BWT.UI.Controllers
             {
                 HttpContext.Session.SetString("names", "No hay información");
                 HttpContext.Session.SetString("nametag", "No hay información");
-                TempData["message"] = "Completa tu información personal"; return Redirect("~/User/RegisterInfo");
+                TempData["message"] = "Completa tu información personal aquí."; return Redirect("~/User/RegisterInfo");
             }
             else
             {
+                HttpContext.Session.SetInt32("IdUser", info.Data.Id);
                 HttpContext.Session.SetString("names", info.Data.FullNames +" "+ info.Data.LastNames);
 
                 HttpContext.Session.SetString("nametag", clans.Data.Select(x => x.Abbreviation).FirstOrDefault() +" " + info.Data.NameTag);
@@ -147,7 +148,7 @@ namespace BWT.UI.Controllers
                 }
             }
             if (request == null) TempData["message"] = "Usuario no creado";
-            else return Redirect("~/User/Validation");
+            else { TempData["message"] = "Credenciales guardadas, porfavor inicie sesión."; return Redirect("~/User/Validation"); }
 
             return View();
         }
@@ -171,7 +172,7 @@ namespace BWT.UI.Controllers
                 }
             }
             if (request == null) TempData["message"] = "Información no guardada";
-            else return Redirect("~/Dash/Index");
+            else { TempData["message"] = "Información guardada, los cambios se verán reflejados en tu próximo inicio de sesión."; return Redirect("~/Dash/Index"); }
             
             return View();
         }
@@ -213,20 +214,78 @@ namespace BWT.UI.Controllers
             else return RedirectToAction("Restore", "User", new { @token = TokenValidation });
 
         }
+        [HttpGet]
+        public async Task<IActionResult> InfoPersonal(UserInfo info)
+        {
+           
+            
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            using (var httpClient = new HttpClient(_hadler))
+            {
+
+                
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+               
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/one/?Id=" + HttpContext.Session.GetInt32("Id")))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.info = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(apiResponse);
+                }
+
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> UpdateInfo(UserInfo info)
+        {
+           
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            ApiResponse<bool> data;
+            info.FkAccess = (int)HttpContext.Session.GetInt32("Id");
+            info.ImageProfile = "uno";
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(info), Encoding.UTF8, "application/json");
+
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                using (var response = await httpClient.PutAsync(apiBaseUrl + "UserInfo/update",content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    data = JsonConvert.DeserializeObject<ApiResponse<bool>>(apiResponse);
+                }
+
+               
+            }
+            if (data.Data != false)
+            {
+                TempData["message"] = "Información guardada."; return Redirect("~/User/InfoPersonal");
+            }
+            return View();
+        }
 
         #endregion
 
         #region Metodos
         public ActionResult Logout()
         {
-            HttpContext.Session.SetString("Token", " ");
+            HttpContext.Session.SetString("Token", string.Empty);
             HttpContext.Session.SetInt32("Id", 0);
-            HttpContext.Session.SetString("Email", " ");
+            HttpContext.Session.SetString("Email", string.Empty);
             HttpContext.Session.SetInt32("Rol", 0);
-            HttpContext.Session.SetString("names", " ");
-            HttpContext.Session.SetString("nametag", " ");
+            HttpContext.Session.SetString("names", string.Empty);
+            HttpContext.Session.SetString("nametag", string.Empty);
             HttpContext.Session.SetInt32("IsOwnerClan", 0);
             HttpContext.Session.SetInt32("clan", 0);
+            HttpContext.Session.SetInt32("IdUser", 0);
 
             return Redirect("~/User/Validation");
         }
@@ -238,6 +297,7 @@ namespace BWT.UI.Controllers
             HttpContext.Session.SetInt32("Rol", data.FkRol);
         }
 
+        
         #endregion
     }
 
