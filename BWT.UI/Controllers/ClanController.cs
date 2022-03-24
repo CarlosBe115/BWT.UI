@@ -105,9 +105,9 @@ namespace BWT.UI.Controllers
             }
             ApiResponse<bool> data;
             UserClan Members = new UserClan();
-            Members.FkUser = (int)HttpContext.Session.GetInt32("Id");
+            Members.FkUser = (int)HttpContext.Session.GetInt32("IdUser");
             Members.FkClan = id;
-            //Members.FkUcrolNavigation = HttpContext.Session.GetInt32("IdUser");
+            Members.FkUcrol = 1;
             Members.DateRegister = DateTime.Now;
             Members.IsValid = true;
             using (var httpClient = new HttpClient(_hadler))
@@ -124,10 +124,10 @@ namespace BWT.UI.Controllers
             if(data.Data == false)
             {
                 TempData["message"] = "Error en el proceso";
-                return Redirect("~/Clan/ListClan");
+                return Redirect("~/Clan/ListClans");
             }
             else 
-                return Redirect("~/Clan/VerClan/" + id);
+                return Redirect("~/Clan/VerClans/" + id);
         }
 
         #endregion

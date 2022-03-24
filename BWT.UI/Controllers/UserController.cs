@@ -58,8 +58,11 @@ namespace BWT.UI.Controllers
         public async Task<IActionResult> Validation(Access access)
         {
             ApiResponse<Access> data;
-            ApiResponse<IEnumerable<Clans>> clan;
+            ApiResponse<IEnumerable<Clans>> clans;
+            ApiResponse< IEnumerable<Clans>> clan;
             ApiResponse<UserInfo> info;
+            ApiResponse<IEnumerable<UserClan>> userclans;
+            ApiResponse<UserClan> userclan;
             using (var httpClient = new HttpClient(_hadler))
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(access), Encoding.UTF8, "application/json");
@@ -72,22 +75,42 @@ namespace BWT.UI.Controllers
                 if (data.Data != null)
                 {
                     FillData(data.Data);
+
                     string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator={HttpContext.Session.GetInt32("Id")}";
+                    //string parameters = $"?NameClan=&DescriptionClan=&CurrentUser=&Abbreviation=&LimitUser=&FKUserCreator=";
                     httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
                     using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/all/" + parameters))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
+                        clans = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
                         clan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
-                    }
 
+                        //clan = (ApiResponse<IEnumerable<Clans>>)clans.Data.Where(x => x.FKUserCreator == (int)HttpContext.Session.GetInt32("Id"));
+                    }
                     using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/one/?Id=" + HttpContext.Session.GetInt32("Id")))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         info = JsonConvert.DeserializeObject<ApiResponse<UserInfo>>(apiResponse);
                     }
+                    //if (clan == null)
+                    //{
+                    //    using (var response = await httpClient.GetAsync(apiBaseUrl + "UserClan/all/"))
+                    //    {
+                    //        string apiResponse = await response.Content.ReadAsStringAsync();
+                    //        userclans = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<UserClan>>>(apiResponse);
+                    //        userclan = (ApiResponse<UserClan>)userclans.Data.Where(x => x.FkUser == (int)HttpContext.Session.GetInt32("Id"));
+                    //    }
+                    //    var clanes = (ApiResponse<IEnumerable<Clans>>)clans.Data.Where(x => x.Id == userclan.Data.FkClan);
+                    //    InfoSession(clanes, info);
+                    //}
+                    //else
+                    //{
+                    //    IEnumerable<Clans> t = (IEnumerable<Clans>)clan.Data;
+                    //    var clanes = new ApiResponse<IEnumerable<Clans>>(t);
+                        InfoSession(clan/*clanes*/, info);
+                    //    }
 
-                    InfoSession(clan, info);
                 }
 
             }
@@ -123,8 +146,7 @@ namespace BWT.UI.Controllers
             {
                 HttpContext.Session.SetInt32("IdUser", info.Data.Id);
                 HttpContext.Session.SetString("names", info.Data.FullNames +" "+ info.Data.LastNames);
-
-                HttpContext.Session.SetString("nametag", clans.Data.Select(x => x.Abbreviation).FirstOrDefault() +" " + info.Data.NameTag);
+                HttpContext.Session.SetString("nametag", clans.Data.Select(x => x.Abbreviation).FirstOrDefault() + " " + info.Data.NameTag);
 
             }
             return View();

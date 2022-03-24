@@ -124,14 +124,13 @@
                         @{
                             if (Context.Session.GetInt32("IsOwnerClan") == 1)
                             {
-                                
-                                    @Html.ActionLink("Ver tu Clan", "VerClan", "Clan", new {id = @Context.Session.GetInt32("clan") })
-                                
+
                             }
                             else
                             {
                                 <a href="../Clan/RegisterClans">
-                                    <i class="bi bi-plus-circle"></i><span>Registrar Clan</span>
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>Registrar Clan</span>
                                 </a>
                             }
                         }
@@ -171,14 +170,17 @@
             @if (Context.Session.GetString("names") != null)
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" @Html.ActionLink("Perfil", "InfoPersonal", "User")/>
+                    <a class="nav-link collapsed" href="../User/InfoPersonal">
+                        <i class="bi bi-person"></i>
+                        <span>Perfil</span>
+                    </a>
                 </li>
 
             }
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" @Html.ActionLink("Perfil", "RegisterInfo", "User")>
+                    <a class="nav-link collapsed" href="../User/RegisterInfo">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
