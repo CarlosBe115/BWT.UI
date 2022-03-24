@@ -23,7 +23,8 @@ namespace BWT.UI.Controllers
             _configuration = configuration;
             apiBaseUrl = _configuration.GetValue<string>("WebApiBaseUrl");
             _hadler.ServerCertificateCustomValidationCallback = (
-                sender, cert, chain, ssLPolicyError) => { return true; };
+                sender, cert, chain, ssLPolicyError) =>
+            { return true; };
         }
 
         #region vista
@@ -48,8 +49,6 @@ namespace BWT.UI.Controllers
                     ViewBag.listclan = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Clans>>>(apiResponse);
                 }
             }
-
-
             return View();
         }
         [HttpGet]
@@ -75,6 +74,62 @@ namespace BWT.UI.Controllers
 
             return View();
         }
+        // GET: ClansController/
+        public async Task<IActionResult> VerClan(int id)
+        {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            using (var httpClient = new HttpClient(_hadler))
+            {
+
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/one/?id=" + id))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.clanone = JsonConvert.DeserializeObject<ApiResponse<Clans>>(apiResponse);
+                }
+            }
+            return View();
+        }
+        [HttpPost]
+        public async Task<ActionResult> addmembers(int id)
+        {
+            if (HttpContext.Session.GetString("Token") == null)
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            ApiResponse<bool> data;
+            UserClan Members = new UserClan();
+            Members.FkUser = (int)HttpContext.Session.GetInt32("Id");
+            Members.FkClan = id;
+            Members.myRange = 1;
+            Members.DateRegister = DateTime.Now;
+            Members.IsValid = true;
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                StringContent content = new StringContent(JsonConvert.SerializeObject(Members), Encoding.UTF8, "application/json");
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+                using (var response = await httpClient.PostAsync(apiBaseUrl + "Clans/new/" , content))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    data = JsonConvert.DeserializeObject<ApiResponse<bool>>(apiResponse);
+                }
+            }
+            if(data.Data == false)
+            {
+                TempData["message"] = "Error en el proceso";
+                return Redirect("~/Clan/ListClan");
+            }
+            else 
+                return Redirect("~/Clan/VerClan/" + id);
+        }
+
         #endregion
         #region Consumo
         [HttpPost]

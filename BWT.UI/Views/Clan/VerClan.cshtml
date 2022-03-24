@@ -1,8 +1,7 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Clanes";
     Layout = "~/Views/Shared/_LayoutDash.cshtml";
-    var listclan = (ApiResponse<IEnumerable<Clans>>)ViewBag.listclan;
+    var listclan = (ApiResponse<Clans>)ViewBag.clanone;
 }
 <div class="pagetitle">
     <h1>Clanes</h1>
@@ -10,7 +9,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="../Dash/Index">Home</a></li>
             <li class="breadcrumb-item">Clanes</li>
-            <li class="breadcrumb-item active">Lista de Clanes</li>
+            <li class="breadcrumb-item active">Tu Clan</li>
         </ol>
     </nav>
 </div>
@@ -20,7 +19,7 @@
         <div class="card top-selling overflow-auto">
 
             <div class="card-body pb-0">
-                <h5 class="card-title">Lista de Clanes <span>BWT </span></h5>
+                <h5 class="card-title">Mi clan <span>BWT </span></h5>
 
                 <table class="table table-borderless">
                     <thead>
@@ -29,26 +28,14 @@
                             <th scope="col">Abreviación</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Usuarios</th>
-                            <th scope="col"></th>
-
                         </tr>
                     </thead>
-                    @foreach (var i in listclan.Data)
-                     {
                         <tr>
-                            <th scope="row">@i.NameClan</th>
-                            <td>@i.Abbreviation</td>
-                            <td>@i.DescriptionClan</td>
-                            <td>@i.CurrentUser de @i.LimitUser</td>
-                            <td>
-                                <form asp-controller="Clan" asp-action="addmembers">
-                                    <input name="id" value="@i.Id"/>
-                                    <button type="submit" class="btn btn-success">Unirse</button>
-                                </form>
-
-                            </td>
+                            <th scope="row">@listclan.Data.NameClan</th>
+                            <td>@listclan.Data.Abbreviation</td>
+                            <td>@listclan.Data.DescriptionClan</td>
+                            <td>@listclan.Data.CurrentUser de @listclan.Data.LimitUser</td>
                         </tr>
-                     }
                 </table>
             </div>
         </div>
