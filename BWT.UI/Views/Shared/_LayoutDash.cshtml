@@ -116,9 +116,7 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="../Clan/ListClans">
-                            <i class="bi bi-card-checklist"></i><span>Lista de Clanes</span>
-                        </a>
+                        @Html.ActionLink("Lista de Clanes", "ListClans", "Clan")
                     </li>
 
                     <li>
@@ -126,9 +124,9 @@
                         @{
                             if (Context.Session.GetInt32("IsOwnerClan") == 1)
                             {
-                                <a href="../Clan/VerClan/@Context.Session.GetInt32("clan")">
-                                    <i class="bi bi-plus-circle"></i><span>Ver tu clan</span>
-                                </a>
+                                
+                                    @Html.ActionLink("Ver tu Clan", "VerClan", "Clan", new {id = @Context.Session.GetInt32("clan") })
+                                
                             }
                             else
                             {
@@ -173,17 +171,14 @@
             @if (Context.Session.GetString("names") != null)
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../User/InfoPersonal">
-                        <i class="bi bi-person"></i>
-                        <span>Perfil</span>
-                    </a>
+                    <a class="nav-link collapsed" @Html.ActionLink("Perfil", "InfoPersonal", "User")/>
                 </li>
 
             }
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../User/RegisterInfo">
+                    <a class="nav-link collapsed" @Html.ActionLink("Perfil", "RegisterInfo", "User")>
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
