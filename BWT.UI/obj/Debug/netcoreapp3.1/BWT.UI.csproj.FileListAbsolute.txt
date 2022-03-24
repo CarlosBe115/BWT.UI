@@ -161,7 +161,6 @@ C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csp
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorAssemblyInfo.cache
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.RazorAssemblyInfo.cs
-C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.AssemblyReference.cache
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\bin\Debug\netcoreapp3.1\BWT.UI.exe
@@ -283,3 +282,5 @@ C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR 
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\InfoPersonal.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\VerClan.cshtml.g.cs
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\InfoPersonal.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\VerClan.cshtml.g.cs
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.AssemblyReference.cache

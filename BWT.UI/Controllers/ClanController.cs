@@ -22,8 +22,8 @@ namespace BWT.UI.Controllers
         {
             _configuration = configuration;
             apiBaseUrl = _configuration.GetValue<string>("WebApiBaseUrl");
-            _hadler.ServerCertificateCustomValidationCallback = (
-                sender, cert, chain, ssLPolicyError) =>
+            _hadler.ServerCertificateCustomValidationCallback = 
+                (sender, cert, chain, ssLPolicyError) =>
             { return true; };
         }
 
@@ -107,7 +107,7 @@ namespace BWT.UI.Controllers
             UserClan Members = new UserClan();
             Members.FkUser = (int)HttpContext.Session.GetInt32("Id");
             Members.FkClan = id;
-            Members.myRange = 1;
+            //Members.FkUcrolNavigation = HttpContext.Session.GetInt32("IdUser");
             Members.DateRegister = DateTime.Now;
             Members.IsValid = true;
             using (var httpClient = new HttpClient(_hadler))

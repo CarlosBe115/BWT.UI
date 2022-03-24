@@ -16,4 +16,6 @@ namespace BWT.UI.Models
 
         public virtual ICollection<UserClan> TbUserClan { get; set; }
     }
+    //public int Id { get; set; }
+    //public string NameRol { get; set; }
 }

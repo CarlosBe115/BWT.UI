@@ -17,5 +17,13 @@ namespace BWT.UI.Models
         public virtual Clans FkClanNavigation { get; set; }
         public virtual UCRol FkUcrolNavigation { get; set; }
         public virtual UserInfo FkUserNavigation { get; set; }
+
+        //public int Id { get; set; }
+        //public int FkUser { get; set; }
+        //public int FkClan { get; set; }
+        //public int MyRange { get; set; }
+        //public DateTime DateRegister { get; set; }
+        //public bool IsValid { get; set; }
+
     }
 }
