@@ -63,16 +63,17 @@
                         </li>
 
                         <li>
-                            @if (Context.Session.GetString("names") != null)
-                            {
-                                <a class="dropdown-item d-flex align-items-center" href="../User/InfoPersonal">
-                                    <i class="bi bi-person"></i>
-                                    <span>Perfil</span>
-                                </a>
-                            }
-                            else 
+                            @if (Context.Session.GetString("names") == "No hay información")
                             {
                                 <a class="dropdown-item d-flex align-items-center" href="../User/RegisterInfo">
+                                    <i class="bi bi-person"></i>
+                                    <span>Registra tu información</span>
+                                </a>
+
+                            }
+                            else
+                            {
+                                <a class="dropdown-item d-flex align-items-center" href="../User/InfoPersonal">
                                     <i class="bi bi-person"></i>
                                     <span>Perfil</span>
                                 </a>
@@ -125,11 +126,10 @@
                     <li>
 
                         @{
-                            if (Context.Session.GetInt32("IsOwnerClan") == 1)
+                            if (Context.Session.GetInt32("IsOwnerClan") == 1 )
                             {
 
-                            }
-                            else
+                            }else
                             {
                                 <a href="../Clan/RegisterClans">
                                     <i class="bi bi-plus-circle-fill"></i>
@@ -172,12 +172,12 @@
 
             @*SOLO LO DEBE VER EL ADMIN*@
             <li class="nav-heading">Ajustes</li>
-            @if (Context.Session.GetString("names") != null)
+            @if (Context.Session.GetString("names") == "No hay información")
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../User/InfoPersonal">
+                    <a class="nav-link collapsed" href="../User/RegisterInfo">
                         <i class="bi bi-person"></i>
-                        <span>Perfil</span>
+                        <span>Registra tu información</span>
                     </a>
                 </li>
 
@@ -185,7 +185,7 @@
             else
             {
                 <li class="nav-item">
-                    <a class="nav-link collapsed" href="../User/RegisterInfo">
+                    <a class="nav-link collapsed" href="../User/InfoPersonal">
                         <i class="bi bi-person"></i>
                         <span>Perfil</span>
                     </a>
