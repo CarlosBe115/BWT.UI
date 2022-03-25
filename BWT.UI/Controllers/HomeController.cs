@@ -26,7 +26,7 @@ namespace BWT.UI.Controllers
 
         public IActionResult Privacy()
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 
                 TempData["message"] = "Usuario no valido";

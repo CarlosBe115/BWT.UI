@@ -31,7 +31,7 @@ namespace BWT.UI.Controllers
         // GET: ClansController/
         public async Task<IActionResult> ListClans(Clans clan)
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -55,7 +55,7 @@ namespace BWT.UI.Controllers
         // GET: ClanController/Create
         public async Task<IActionResult> RegisterClans()
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -77,14 +77,13 @@ namespace BWT.UI.Controllers
         // GET: ClansController/
         public async Task<IActionResult> VerClan(int id)
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
             }
             using (var httpClient = new HttpClient(_hadler))
             {
-
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
                 using (var response = await httpClient.GetAsync(apiBaseUrl + "Clans/one/?id=" + id))
@@ -92,13 +91,23 @@ namespace BWT.UI.Controllers
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     ViewBag.clanone = JsonConvert.DeserializeObject<ApiResponse<Clans>>(apiResponse);
                 }
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "UserClan/all"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.listmembers = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<UserClan>>>(apiResponse);
+                }
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "UserInfo/all"))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.listinfo = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<UserInfo>>>(apiResponse);
+                }
             }
             return View();
         }
         [HttpPost]
         public async Task<ActionResult> addmembers(int id)
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -115,7 +124,7 @@ namespace BWT.UI.Controllers
                 StringContent content = new StringContent(JsonConvert.SerializeObject(Members), Encoding.UTF8, "application/json");
                 httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
 
-                using (var response = await httpClient.PostAsync(apiBaseUrl + "Clans/new/" , content))
+                using (var response = await httpClient.PostAsync(apiBaseUrl + "UserClan/new/" , content))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     data = JsonConvert.DeserializeObject<ApiResponse<bool>>(apiResponse);
@@ -126,8 +135,11 @@ namespace BWT.UI.Controllers
                 TempData["message"] = "Error en el proceso";
                 return Redirect("~/Clan/ListClans");
             }
-            else 
-                return Redirect("~/Clan/VerClans/" + id);
+            else
+            {
+                TempData["message"] = "Te has unido a un clan, espera noticias del líder pronto.";
+                return Redirect("~/Dash/Index");
+            }
         }
 
         #endregion
@@ -154,8 +166,34 @@ namespace BWT.UI.Controllers
             else return Redirect("~/Clan/ListClans");
             return View();
         }
-
-
+        public async Task<ActionResult> DeleteMember(int idmember, int idclan)
+        {
+            ApiResponse<bool> request;
+            if (HttpContext.Session.GetString("Token") == "vacio")
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                using (var response = await httpClient.DeleteAsync(apiBaseUrl + "UserClan/delete/?id=" + idmember))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    request = JsonConvert.DeserializeObject<ApiResponse<bool>>(apiResponse);
+                }
+            }
+            if(request.Data == false)
+            {
+                TempData["message"] = "El miembro no se a eliminado correctamente.";
+                return Redirect("~/Clan/VerClan/" + idclan);
+            }
+            else
+            {
+                TempData["message"] = "Miembro eliminado, lista actualzada.";
+                return Redirect("~/Clan/VerClan/" + idclan);
+            }
+        }
         #endregion
 
     }

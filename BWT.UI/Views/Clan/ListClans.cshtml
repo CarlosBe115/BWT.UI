@@ -16,7 +16,6 @@
     </nav>
 </div>
 <div class="row">
-    <!-- Top Selling -->
     <div class="col-12">
         <div class="card top-selling overflow-auto">
 
@@ -31,10 +30,7 @@
                         </form>
                     }
                     else
-                    {
-
-
-                    }
+                    {}
                 }
                 <table class="table table-borderless">
                     <thead>
@@ -48,7 +44,7 @@
                         </tr>
                     </thead>
                     @foreach (var i in listclan.Data)
-                    {
+                     {
                         <tr>
                             <th scope="row">@i.NameClan</th>
                             <td>@i.Abbreviation</td>
@@ -56,13 +52,12 @@
                             <td>@i.CurrentUser de @i.LimitUser</td>
                             <td>
                                 <form asp-controller="Clan" asp-action="addmembers">
-                                    <input name="id" value="@i.Id" />
+                                    <input name="id" value="@i.Id" hidden />
                                     <button type="submit" class="btn btn-success">Unirse</button>
                                 </form>
-
                             </td>
                         </tr>
-                    }
+                     }
                 </table>
             </div>
         </div>

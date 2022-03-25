@@ -1,4 +1,5 @@
 ﻿using BWT.UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,7 @@ namespace BWT.UI.Controllers
         // GET: DashController
         public async Task<IActionResult> Index()
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio" )
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");

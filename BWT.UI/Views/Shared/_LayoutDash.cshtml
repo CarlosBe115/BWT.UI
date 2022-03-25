@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
+    <link href="~/img/favicon.ico" rel="icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -116,7 +116,10 @@
                 </a>
                 <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                     <li>
-                        @Html.ActionLink("Lista de Clanes", "ListClans", "Clan")
+                        <a href="../Clan/ListClans">
+                            <i class="bi bi-card-checklist"></i>
+                            <span>Lista de Clanes</span>
+                        </a>
                     </li>
 
                     <li>
@@ -129,7 +132,7 @@
                             else
                             {
                                 <a href="../Clan/RegisterClans">
-                                    <i class="bi bi-plus-circle"></i>
+                                    <i class="bi bi-plus-circle-fill"></i>
                                     <span>Registrar Clan</span>
                                 </a>
                             }
@@ -150,12 +153,14 @@
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
                             <a href="../Games/ListGames">
-                                <i class="bi bi-card-checklist"></i><span>Lista de Juegos</span>
+                                <i class="bi bi-card-checklist"></i>
+                                <span>Lista de Juegos</span>
                             </a>
                         </li>
                         <li>
                             <a href="../Games/Create">
-                                <i class="bi bi-plus-circle"></i><span>Agregar elemento</span>
+                                <i class="bi bi-plus-circle-fill"></i>
+                                <span>Agregar elemento</span>
                             </a>
                         </li>
                     </ul>

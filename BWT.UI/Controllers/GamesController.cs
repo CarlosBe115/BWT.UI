@@ -30,7 +30,7 @@ namespace BWT.UI.Controllers
         // GET: GamesController/
         public async Task<IActionResult> ListGames(Games games)
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -54,7 +54,7 @@ namespace BWT.UI.Controllers
         // GET: GamesController/Create
         public IActionResult Create()
         {
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");

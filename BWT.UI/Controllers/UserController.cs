@@ -61,8 +61,8 @@ namespace BWT.UI.Controllers
             ApiResponse<IEnumerable<Clans>> clans;
             ApiResponse< IEnumerable<Clans>> clan;
             ApiResponse<UserInfo> info;
-            ApiResponse<IEnumerable<UserClan>> userclans;
-            ApiResponse<UserClan> userclan;
+            //ApiResponse<IEnumerable<UserClan>> userclans;
+            //ApiResponse<UserClan> userclan;
             using (var httpClient = new HttpClient(_hadler))
             {
                 StringContent content = new StringContent(JsonConvert.SerializeObject(access), Encoding.UTF8, "application/json");
@@ -241,7 +241,7 @@ namespace BWT.UI.Controllers
         {
            
             
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -266,7 +266,7 @@ namespace BWT.UI.Controllers
         public async Task<ActionResult> UpdateInfo(UserInfo info)
         {
            
-            if (HttpContext.Session.GetString("Token") == null)
+            if (HttpContext.Session.GetString("Token") == "vacio")
             {
                 TempData["message"] = "Inicia sesión para acceder";
                 return Redirect("~/User/Validation");
@@ -299,7 +299,7 @@ namespace BWT.UI.Controllers
         #region Metodos
         public ActionResult Logout()
         {
-            HttpContext.Session.SetString("Token", string.Empty);
+            HttpContext.Session.SetString("Token", "vacio");
             HttpContext.Session.SetInt32("Id", 0);
             HttpContext.Session.SetString("Email", string.Empty);
             HttpContext.Session.SetInt32("Rol", 0);
