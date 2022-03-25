@@ -28,15 +28,15 @@
                     <form class="row g-3" method="post" asp-controller="Clan" asp-action="RegisterClans">
                         <div class="col-md-12">
                             <label for="inputName5" class="form-label">Nombre del Clan</label>
-                            <input type="text" class="form-control" name="NameClan">
+                            <input type="text" class="form-control" name="NameClan" maxlength="25">
                         </div>
                         <div class="col-md-6">
                             <label for="inputEmail5" class="form-label">Abreviación</label>
-                            <input type="text" class="form-control" name="Abbreviation">
+                            <input type="text" class="form-control" name="Abbreviation" maxlength="3">
                         </div>
                         <div class="col-md-6">
-                            <label for="inputPassword5" class="form-label">Descripción del clan</label>
-                            <input type="text" class="form-control" name="DescriptionClan">
+                            @*<label for="inputPassword5" class="form-label">Descripción del clan</label>*@
+                            <textarea class="form-control" name="DescriptionClan"> Descripción del clan</textarea>
                         </div>
                         <div class="col-12">
                             <label for="inputAddress5" class="form-label">Videjuego</label>
