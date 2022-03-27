@@ -49,6 +49,28 @@ namespace BWT.UI.Controllers
             ViewBag.Token = token;
             return View();
         }
+        public async Task<IActionResult> ListUser(Access access)
+        {
+            if (HttpContext.Session.GetString("Token") == "vacio")
+            {
+                TempData["message"] = "Inicia sesión para acceder";
+                return Redirect("~/User/Validation");
+            }
+            using (var httpClient = new HttpClient(_hadler))
+            {
+                string parameters = $"?NameGame={access.EmailAddress}&DescriptionGame={access.EmailPassword}";
+                httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+
+
+                using (var response = await httpClient.GetAsync(apiBaseUrl + "Access/all/" + parameters))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    ViewBag.listuser = JsonConvert.DeserializeObject<ApiResponse<IEnumerable<Access>>>(apiResponse);
+                }
+            }
+
+            return View();
+        }
 
         #endregion
 

@@ -284,3 +284,4 @@ C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR 
 C:\Users\edwin\Desktop\8vo cuatrimestre\Desarrollo Web Profesional\Proyecto BWR UI\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\InfoPersonal.cshtml.g.cs
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\Clan\VerClan.cshtml.g.cs
 C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\BWT.UI.csproj.AssemblyReference.cache
+C:\Users\carna\Documents\GitHub\BWT.UI\BWT.UI\obj\Debug\netcoreapp3.1\Razor\Views\User\ListUser.cshtml.g.cs
