@@ -1,6 +1,6 @@
 # Proyecto Black Warriors Team
 
-Proyecto frontend realizado en C# para consumo de la API
+Proyecto backend en controladores y fronted realizado en C# para consumo de la API
 
 Colaboradores: 
 - Carlos Be
