@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ig/FVCiAgT9XnhpXBFmbYVSf3patw8FMogHBn9jrnM+8NI02GLLg+9RtaJXErv/phRuiu66vml3yjYMpE8019w==",
+  "dgSpecHash": "QOj7qeuXbb0TZHKzcVg4aZEq8Gm97Delx/41//BFivxpzruZRmn0DjTaJB/fS6MmR3oG7YyImD9NnYz3174o0Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\carna\\Documents\\GitHub\\BWT.UI\\BWT.UI\\BWT.UI.csproj",
+  "projectFilePath": "C:\\Users\\carna\\OneDrive\\Documentos\\GitHub\\BWT.UI\\BWT.UI\\BWT.UI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\carna\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\carna\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
